@@ -21,6 +21,8 @@ class VCFLoader:
         self.headers = tuple(headers_line[1:].strip().split("\t"))
 
     def get_next_entry(self):
+        if self.file is None:
+            raise StopIteration
         line = self.file.readline()
         if line == "":
             self.close()
